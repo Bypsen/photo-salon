@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Онлайн запись - Фотоателье "Момент"</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="booking.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <header class="parallax">
+        <div class="overlay">
+            <nav>
+                <h1 class="logo">
+                    <a href="/">Фотосалон Момент</a>
+                  </h1>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="gallery.html">Галерея</a></li>
+                    <li><a href="booking.html" class="active">Запись</a></li>
+                </ul>
+            </nav>
+            <div class="hero-content">
+                <h1>Записаться на съемку</h1>
+                <p>Выберите удобное время и тип съемки</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="booking-container">
+        <div class="booking-form-container">
+            <h2>Форма записи</h2>
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="name">Ваше имя</label>
+                    <input type="text" id="name" name="name" required>
+                    <span class="error-message" id="name-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-message" id="email-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone" name="phone" required>
+                    <span class="error-message" id="phone-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service">Тип съемки</label>
+                    <select id="service" name="service" required>
+                        <option value="">Выберите тип съемки</option>
+                        <option value="portrait">Портретная съемка</option>
+                        <option value="family">Семейная фотосессия</option>
+                        <option value="wedding">Свадебная съемка</option>
+                        <option value="retro">Ретро фотосессия</option>
+                        <option value="minimalism">Минималистичная съемка</option>
+                    </select>
+                    <span class="error-message" id="service-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Дата съемки</label>
+                    <input type="text" id="date" name="date" placeholder="Выберите дату" required>
+                    <span class="error-message" id="date-error"></span>
+                </div>
+                
+                <div class="form-group time-slots" id="time-slots">
+                    <label>Доступное время</label>
+                    <div class="slots-container" id="slots-container">
+                        <!-- Time slots will be loaded dynamically -->
+                        <p>Выберите дату для просмотра доступного времени</p>
+                    </div>
+                    <span class="error-message" id="time-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="comments">Дополнительные пожелания</label>
+                    <textarea id="comments" name="comments" rows="4"></textarea>
+                </div>
+                
+                <button type="submit" class="btn submit-btn">Забронировать</button>
+            </form>
+        </div>
+        
+        <div class="booking-info">
+            <h3>Информация о записи</h3>
+            <div class="info-card">
+                <i class="fas fa-clock"></i>
+                <h4>Часы работы</h4>
+                <p>Пн-Пт: 10:00 - 20:00</p>
+                <p>Сб-Вс: 10:00 - 18:00</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h4>Адрес студии</h4>
+                <p>г. Москва, ул. Фотографов, 15</p>
+                <a href="#" class="map-link">Посмотреть на карте</a>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-info-circle"></i>
+                <h4>Подготовка к съемке</h4>
+                <p>Рекомендуем ознакомиться с нашими советами по подготовке к фотосессии</p>
+                <a href="#" class="tips-link">Читать советы</a>
+            </div>
+        </div>
+    </section>
+
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <i class="fas fa-check-circle success-icon"></i>
+            <h3>Запись успешно оформлена!</h3>
+            <p id="success-message"></p>
+            <button class="btn" id="close-success-btn">Закрыть</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section footer-contacts">
+                <h3>Контакты</h3>
+                <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> г. Москва, ул. Фотографов, 15</p>
+                <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +7 (123) 456-78-90</p>
+                <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@moment-studio.ru</p>
+            </div>
+            <div class="footer-section footer-hours">
+                <h3>Часы работы</h3>
+                <p>Пн-Пт: 10:00 - 20:00</p>
+                <p>Сб-Вс: 10:00 - 18:00</p>
+            </div>
+            <div class="footer-section footer-social">
+                <h3>Подписаться</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Фотоателье "Момент". Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
+    <script src="booking.js"></script>
+</body>
+</html>
